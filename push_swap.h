@@ -14,15 +14,18 @@
 # define PUSH_SWAP_H
 #include <stdlib.h>
 #include <unistd.h>
-int	ft_atoi(const char *str);
 
-/// Structure
-typedef struct s_stacks
+// Structure
+typedef struct s_stack
 {
-	int *stackA;
-	int	sizeA;
-	int *stackB;
-	int	sizeB;
-}	t_stacks;
+	int	nbr;
+	int	index;
+	int	size;
+ 	int	stay;
+    	int	top_get;
+ 	int	best_start;   // nb aui permet de trouver la plus longue liste
+  	int	best_back;  // nb de coup de revenir au bon endroi dans la stack A
+	struct s_stack	*next;
+}	t_stack;
 
 #endif
