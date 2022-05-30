@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSHSWAP_H
+# define PUSHSWAP_H
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -28,4 +28,17 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+
+// utils
+void	error(void);
+int	ft_strlen_split(char **str);
+
+// utils_lst
+
+// else
+char	**ft_split(char const *s, char c);
+size_t	ft_strlen(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+int	ft_atoi(const char *str);
+int	arg(int ac, char **av);
 #endif
