@@ -6,7 +6,7 @@
 /*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:24:20 by agunesli          #+#    #+#             */
-/*   Updated: 2021/11/29 16:50:54 by agunesli         ###   ########.fr       */
+/*   Updated: 2022/05/30 21:48:26 by agunesli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ int	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
+	if (str[i])
+		return (0);
 	return (nb * nb_);
 }

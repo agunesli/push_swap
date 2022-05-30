@@ -6,12 +6,11 @@
 /*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:12:58 by agunesli          #+#    #+#             */
-/*   Updated: 2021/11/29 17:02:45 by agunesli         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:10:10 by agunesli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
 static char	**ft_big_malloc(char const *s, char c)
 {
 	size_t	i;
@@ -22,71 +21,73 @@ static char	**ft_big_malloc(char const *s, char c)
 	cpt = 0;
 	while (s[i])
 	{
-		if (s[i + 1] && s[i] == c && s[i + 1] != c && i != 0)
+		if (s[i + 1] && i != 0 && s[i] == c && s[i + 1] != c)
 			cpt++;
 		i++;
 	}
-	if (!cpt)
-		dst = (char **)malloc(sizeof(char *));
-	else 
-		dst = (char **)malloc(sizeof(char *) * (cpt + 2));
+	dst = (char **)malloc(sizeof(char *) * (cpt + 2));
 	if (!dst)
 		return (NULL);
 	return (dst);
 }
 
-static void	ft_free_all(char **d)
+static char	**ft_free_all(char **d, size_t j)
 {
-	int	i;
-
-	i = 0;
-	while (d[i] == NULL)
+	while (j > 0)
 	{
-		free(d[i]);
-		i++;
+		free(d[j]);
+		j--;
 	}
-	free(d[i]);
+	free(d[j]);
 	free(d);
+	return (NULL);
 }
 
-static char	**ft_subsplit(char const *s, char **dst, char c, size_t i)
+size_t	ft_len_word(char const *s, char c)
+{
+	size_t	len;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	return (len);
+}
+
+static char	**ft_subsplit(char const *s, char **dst, char c)
 {
 	size_t	len;
 	size_t	j;
+	size_t	i;
 
 	j = 0;
-	while (s[i])
+	i = 0;
+	while (s[i] && i <= ft_strlen(s))
 	{
-		len = 0;
-		while (s[i + len] && s[i + len] != c)
-			len++;
+		len = ft_len_word(s + i, c);
 		if (len != 0)
 		{
 			dst[j] = ft_substr(s, i, len);
 			if (!dst[j])
-			{
-				ft_free_all(dst);
-				break ;
-			}
+				return (ft_free_all(dst, j));
 			j++;
 			if (len + i == ft_strlen(s))
 				len--;
 		}
 		i += (len + 1);
 	}
-	dst[j] = NULL;
+	dst[j] = 0;
 	return (dst);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
 	char	**dst;
 
 	if (!s)
 		return (NULL);
 	dst = ft_big_malloc(s, c);
-	i = 0;
-	dst = ft_subsplit(s, dst, c, i);
+	if (!dst)
+		return (NULL);
+	dst = ft_subsplit(s, dst, c);
 	return (dst);
 }

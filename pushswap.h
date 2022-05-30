@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:47:57 by agunesli          #+#    #+#             */
-/*   Updated: 2022/03/29 23:01:07 by agunesli         ###   ########.fr       */
+/*   Updated: 2022/05/30 22:12:26 by agunesli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ typedef struct s_stack
 
 // utils
 void	error(void);
+void	free_all(char **d);
+void	error_parsing(char **str);
 int	ft_strlen_split(char **str);
+char	**ft_shift(char **str, int size);
 
 // utils_lst
 
@@ -39,6 +42,7 @@ int	ft_strlen_split(char **str);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *src);
 int	ft_atoi(const char *str);
 int	arg(int ac, char **av);
 #endif

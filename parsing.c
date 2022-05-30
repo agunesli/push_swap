@@ -1,30 +1,25 @@
 #include "pushswap.h"
 #include <stdio.h>
 
-void	check_int(char **av, int size)
+void	check_int(char **av)
 {
 	int	i;
 	int	tmp;
 
 	i = -1;
-	while (++i < size)
+	while (av[++i] != NULL)
 	{
 		tmp = ft_atoi(av[i]);
-		if (!tmp && (av[i][0] != '0'
-		|| !(av[i][0] == '-' && av[i][1] == '0')))
-			error();
-		printf("a\n");
+		if (!tmp && (av[i][0] != '0'))
+			error_parsing(av);
 		if (tmp > 2147483647)
-			error();
-		printf("b\n");
-		if (tmp < -2147483648)
-			error();
-		printf("c\n");
+			error_parsing(av);
+		if (tmp < -2147483647)
+			error_parsing(av);
 	}
-	printf("A\n");
 }
 
-int	check_duplicate(char **av, int size)
+int	check_duplicate(char **av)
 {
 	int	i;
 	int	j;
@@ -32,39 +27,33 @@ int	check_duplicate(char **av, int size)
 
 	i = 0;
 	sorted = 1;
-	while (i < size)
+	while (av[i] != NULL)
 	{
 		j = i + 1;
-		while (j < size)
+		while (av[j] != NULL)
 		{
 			if (ft_atoi(av[i]) == ft_atoi(av[j]))
-				error();
+				error_parsing(av);
 			if (ft_atoi(av[i]) > ft_atoi(av[j]))
 				sorted = 0;
 			j++;
 		}
 		i++;
 	}
-	printf("B\n");
+	free_all(av);
 	return (sorted);
 }
 
-int	check(char **av, int size)
+int	check(char **av)
 {
-	check_int(av, size);
-	return (check_duplicate(av, size));
+	check_int(av);
+	return (check_duplicate(av));
 }
 
 int	arg(int ac, char **av)
 {
-	char	**str;
-
-	str = NULL;
 	if (ac == 2)
-	{
-		str = ft_split(av[1], ' ');
-		return (check(str, ft_strlen_split(str)));
-	}
+		return (check(ft_split(av[1], ' ')));
 	else
-		return (check(av, ac));
+		return (check(ft_shift(av, ac)));
 }
