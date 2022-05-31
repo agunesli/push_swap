@@ -28,6 +28,9 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+// get_start
+t_stack	*get_start(char **av, int ac);
+void	init_topget(t_stack *begin, int size);
 
 // utils
 void	error(void);
