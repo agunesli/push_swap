@@ -36,6 +36,24 @@ int	ft_strlen_split(char **str)
 	return (i);
 }
 
+void	free_stack(t_stack *begin)
+{
+	int	size;
+	int	i;
+	t_stack	*tmp;
+
+	if (!begin)
+		return ;
+	size = begin->size;
+	i = -1;
+	while (++i < size)
+	{
+		tmp = begin;
+		begin = begin->next;
+		free(tmp);
+	}
+}
+
 char **ft_shift(char **str, int size)
 {
 	char	**dst;

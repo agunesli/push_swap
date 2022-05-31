@@ -31,12 +31,22 @@ typedef struct s_stack
 // get_start
 t_stack	*get_start(char **av, int ac);
 void	init_topget(t_stack *begin, int size);
+void	print_data(t_stack *begin, int size);
+
+// rules
+void	push(t_stack **a, t_stack **b, char c);
+void	rotate(t_stack **x, t_stack **y, char c);
+void	rev_rotate(t_stack **x, t_stack **y, char c);
+
+//algo
+void	algo_push_b(t_stack **a, t_stack **b);
 
 // utils
 void	error(void);
 void	free_all(char **d);
 void	error_parsing(char **str);
 int	ft_strlen_split(char **str);
+void	free_stack(t_stack *begin);
 char	**ft_shift(char **str, int size);
 
 // utils_lst

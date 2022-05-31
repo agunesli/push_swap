@@ -78,14 +78,25 @@ void	init_topget(t_stack *begin, int size)
 	halfsize = size / 2 + size % 2;
 	i = -1;
 	j = -1;
+//	printf("\nsize is %d, halfsize is %d\n", size, halfsize);
+//	printf("Begin is %p %d %d\n", begin, begin->nbr, begin->top_get);
 	while (++j < halfsize)
 	{
+//		printf("j = %d ", j);
+		begin->top_get = j;
+//		printf("topget = %d\n", begin->top_get);
+		begin = begin->next;
+	}
+//	printf("j = %d\n", j);
+	if (size % 2 == 0)
+	{
+//		write(1, "ded\n",4);
 		begin->top_get = j;
 		begin = begin->next;
 	}
-	printf("j = %d\n", j);
 	while (--j > 0)
 	{
+//		printf("j = %d\n", j);
 		begin->top_get = j;
 		begin = begin->next;
 	}
@@ -138,7 +149,8 @@ t_stack	*get_start(char **av, int ac)
 	free_all(dst);
 	init_beststart(begin, size); // OK
 	init_stay(begin, size); // OK
-	init_topget(begin, size); //
+	init_topget(begin, size); // OK
+	printf("********** START **********\n");
 	print_data(begin, size);
 	return (begin);
 
