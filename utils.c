@@ -15,7 +15,7 @@ void	free_all(char **str)
 	{
 		free(str[i]);
 		i++;
-	}	
+	}
 	free(str);
 }
 
@@ -38,8 +38,8 @@ int	ft_strlen_split(char **str)
 
 void	free_stack(t_stack *begin)
 {
-	int	size;
-	int	i;
+	int		size;
+	int		i;
 	t_stack	*tmp;
 
 	if (!begin)
@@ -54,10 +54,10 @@ void	free_stack(t_stack *begin)
 	}
 }
 
-char **ft_shift(char **str, int size)
+char	**ft_shift(char **str, int size)
 {
 	char	**dst;
-	int	i;
+	int		i;
 
 	i = 0;
 	dst = malloc(sizeof(char *) * size);

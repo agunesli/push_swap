@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_start.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 20:39:04 by agunesli          #+#    #+#             */
+/*   Updated: 2022/05/31 23:52:20 by agunesli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 #include <stdio.h>
 
@@ -15,13 +27,13 @@ void	print_data(t_stack *begin, int size)
 
 t_stack	*init_a(char **dst, int size, t_stack *begin)
 {
-	int	i;
+	int		i;
 	t_stack	*tmp;
-	
+
 	i = size;
 //	printf("size = %d\n", size);
 	tmp = NULL;
-	while (--i > -1 )
+	while (--i > -1)
 	{
 		tmp = (t_stack *)malloc(sizeof(t_stack));
 		if (!tmp)
@@ -40,8 +52,8 @@ t_stack	*init_a(char **dst, int size, t_stack *begin)
 
 void	init_beststart(t_stack *begin, int size)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_stack	*tmp;
 	t_stack	*fix;
 
@@ -58,7 +70,7 @@ void	init_beststart(t_stack *begin, int size)
 		{
 			if (tmp->nbr < begin->next->nbr)
 			{
-				fix->best_start++;;
+				fix->best_start++;
 				tmp = begin->next;
 	//			printf("max nbr est %p %d => %d\n",tmp, tmp->nbr, fix->best_start);
 			}
@@ -72,11 +84,9 @@ void	init_beststart(t_stack *begin, int size)
 void	init_topget(t_stack *begin, int size)
 {
 	int	halfsize;
-	int	i;
 	int	j;
 
 	halfsize = size / 2 + size % 2;
-	i = -1;
 	j = -1;
 //	printf("\nsize is %d, halfsize is %d\n", size, halfsize);
 //	printf("Begin is %p %d %d\n", begin, begin->nbr, begin->top_get);
@@ -105,7 +115,7 @@ void	init_topget(t_stack *begin, int size)
 void	init_stay(t_stack *begin, int size)
 {
 	t_stack	*big;
-	int	i;
+	int		i;
 
 	i = -1;
 	big = begin;
@@ -138,7 +148,7 @@ t_stack	*get_start(char **av, int ac)
 {
 	char	**dst;
 	t_stack	*begin;
-	int	size;
+	int		size;
 
 	if (ac == 2)
 		dst = ft_split(av[1], ' ');
@@ -153,5 +163,4 @@ t_stack	*get_start(char **av, int ac)
 	printf("********** START **********\n");
 	print_data(begin, size);
 	return (begin);
-
 }

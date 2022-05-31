@@ -32,7 +32,6 @@ int	ft_atoi(const char *str)
 	nb = 0;
 	nb_ = 1;
 	i = 0;
-//	i = ft_isspace(str);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')

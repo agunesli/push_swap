@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
 static char	**ft_big_malloc(char const *s, char c)
 {
 	size_t	i;

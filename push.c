@@ -39,13 +39,9 @@ void	update_dst(t_stack *begin)
 
 void	push(t_stack **src, t_stack **dst, char c)
 {
-	int	i;
 	t_stack	*tmp;
 	t_stack	*tmpp;
 
-
-	i = -1;
-	(void)c;
 	tmp = *src;
 	tmpp = *src;
 	printf("\n**********PUSH********\n"); //
@@ -60,7 +56,6 @@ void	push(t_stack **src, t_stack **dst, char c)
 	tmp = tmp->next;
 	*src = tmp;
 	update_src(*src);
-
 	if (!*dst)
 	{
 		*dst = tmpp;
@@ -74,8 +69,8 @@ void	push(t_stack **src, t_stack **dst, char c)
 		tmpp->next = *dst;
 		while ((*dst)->index != (*dst)->size - 1)
 			*dst = (*dst)->next;
-		(*dst)->next = tmpp; 
-		*dst = (*dst)->next; 
+		(*dst)->next = tmpp;
+		*dst = (*dst)->next;
 		update_dst(*dst);
 	}
 	write(1, "p", 1);

@@ -21,16 +21,14 @@ void	rot(t_stack *x)
 	print_data(x, x->size);
 }
 
-
 void	rotate(t_stack **x, t_stack **y, char c)
 {
 	printf("******** ROTATE *********\n");
 	printf("Begin is %p %d\n", *x, (*x)->nbr);
 	rot(*x);
 	*x = (*x)->next;
-	(void)y;
-/*	if (*y)
-		rot(*y);*/
+	if (y)
+		rot(*y);
 	write(1, "r", 1);
 	write(1, &c, 1);
 	write(1, "\n", 1);
@@ -52,14 +50,12 @@ void	rev(t_stack *x)
 	print_data(x, x->size);
 }
 
-
 void	rev_rotate(t_stack **x, t_stack **y, char c)
 {
 	printf("******** REV ROT *********\n");
 	rot(*x);
-	(void)y;
-/*	if (*y)
-		rot(*y);*/
+	if (y)
+		rot(*y);
 	write(1, "rr", 2);
 	write(1, &c, 1);
 	write(1, "\n", 1);
