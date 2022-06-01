@@ -24,7 +24,7 @@ t_stack	*found_less_op(t_stack *begin)
 	return (tmp);
 }
 
-void	get_top(t_stack **x, t_stack tmp, char c)
+void	get_top(t_stack **x, t_stack *tmp, char c)
 {
 	int	i;
 	int	top;
@@ -56,4 +56,5 @@ void	algo_push_b(t_stack **a, t_stack **b)
 		push(a, b, 98);
 		tmp = found_less_op(*a);
 	}
+	printf("\n\n -------------- END 1 STEP --------------\n\n");
 }

@@ -87,5 +87,4 @@ void	algo_back_a(t_stack **a, t_stack **b)
 	// 	}
 	// 	//write(1, "bouh\n",5);
 	// 	//push(a, b, 98);
-	}
 }

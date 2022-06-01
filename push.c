@@ -50,8 +50,10 @@ void	push(t_stack **src, t_stack **dst, char c)
 //		printf("dst %p %d [%d]\n", *dst, (*dst)->nbr, (*dst)->index); //
 	while ((*src)->index != 0)
 		*src = (*src)->next;
+	printf("src is %p %d et ", *src, (*src)->nbr);
 	while (tmp->index != tmp->size - 1)
 		tmp = tmp->next;
+	printf("tmp is %p %d\n", tmp, tmp->nbr);
 	tmp->next = (*src)->next;
 	tmp = tmp->next;
 	*src = tmp;
