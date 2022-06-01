@@ -15,8 +15,6 @@ void	update_src(t_stack *begin)
 		begin = begin->next;
 	}
 	init_topget(begin, size);
-	printf("\n_______stack a_______\n"); //
-	print_data(begin, size);//
 }
 
 void	update_dst(t_stack *begin)
@@ -33,8 +31,6 @@ void	update_dst(t_stack *begin)
 		begin = begin->next;
 	}
 	init_topget(begin, size);
-	printf("\n_______stack b_______\n"); //
-	print_data(begin, size); //
 }
 
 void	push(t_stack **src, t_stack **dst, char c)
@@ -50,21 +46,29 @@ void	push(t_stack **src, t_stack **dst, char c)
 //		printf("dst %p %d [%d]\n", *dst, (*dst)->nbr, (*dst)->index); //
 	while ((*src)->index != 0)
 		*src = (*src)->next;
-	printf("src is %p %d et ", *src, (*src)->nbr);
+	// printf("src is %p %d et ", *src, (*src)->nbr);
 	while (tmp->index != tmp->size - 1)
 		tmp = tmp->next;
-	printf("tmp is %p %d\n", tmp, tmp->nbr);
-	tmp->next = (*src)->next;
-	tmp = tmp->next;
-	*src = tmp;
-	update_src(*src);
+	// printf("tmp is %p %d\n", tmp, tmp->nbr);
+	if (tmp == *src)
+		*src = NULL;
+	else
+	{
+		tmp->next = (*src)->next;
+		tmp = tmp->next;
+		*src = tmp;
+		update_src(*src);
+	}
+	if (c == 97 && *src)
+		print_data(*src, (*src)->size, c + 1);
+	else if (*src)
+		print_data(*src, (*src)->size, c - 1);
 	if (!*dst)
 	{
 		*dst = tmpp;
 		(*dst)->size = 1;
 		(*dst)->next = *dst;
-		printf("\n_______stack b_______\n"); //
-		print_data(*dst, (*dst)->size); //
+		print_data(*dst, (*dst)->size, (c));//
 	}
 	else
 	{
@@ -74,6 +78,7 @@ void	push(t_stack **src, t_stack **dst, char c)
 		(*dst)->next = tmpp;
 		*dst = (*dst)->next;
 		update_dst(*dst);
+		print_data(*dst, (*dst)->size, (c));//
 	}
 	write(1, "p", 1);
 	write(1, &c, 1);

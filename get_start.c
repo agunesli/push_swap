@@ -13,10 +13,10 @@
 #include "pushswap.h"
 #include <stdio.h>
 
-void	print_data(t_stack *begin, int size)
+void	print_data(t_stack *begin, int size, char c)
 {
 	int	i = 0;
-
+	printf("\n_______stack %c_______\n", c);
 	while (i < size)
 	{
 		printf("%p nb = %d, index = %d, size = %d, beststart = %d, stay = %d, top_get = %d, next = %p\n",begin, begin->nbr, begin->index, begin->size, begin->best_start, begin->stay, begin->top_get, begin->next);
@@ -161,6 +161,6 @@ t_stack	*get_start(char **av, int ac)
 	init_stay(begin, size); // OK
 	init_topget(begin, size); // OK
 	printf("********** START **********\n");
-	print_data(begin, size);
+	print_data(begin, size, 'a');
 	return (begin);
 }

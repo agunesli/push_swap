@@ -28,10 +28,17 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct s_extremum
+{
+	int	min;
+	int	max;
+}	t_extremum;
+
+
 // get_start
 t_stack	*get_start(char **av, int ac);
 void	init_topget(t_stack *begin, int size);
-void	print_data(t_stack *begin, int size);
+void	print_data(t_stack *begin, int size, char c);
 
 // rules
 void	push(t_stack **a, t_stack **b, char c);

@@ -19,8 +19,8 @@ t_stack	*found_less_op(t_stack *begin)
 		}
 		begin = begin->next;
 	}
-	if (tmp)
-		printf("\n\nbest sort topget is %p %d %d\n", tmp, tmp->nbr, tmp->top_get);
+	// if (tmp)
+	// 	printf("\n\nbest sort topget is %p %d %d\n", tmp, tmp->nbr, tmp->top_get);
 	return (tmp);
 }
 
