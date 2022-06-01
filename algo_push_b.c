@@ -43,12 +43,11 @@ void	algo_push_b(t_stack **a, t_stack **b)
 		}
 		else
 		{
-			while (++i < tmp->top_get)
+			while (++i < top)
 				rev_rotate(a, NULL, 97);
 		}
 		//write(1, "bouh\n",5);
 		push(a, b, 98);
 		tmp = found_less_op(*a);
-
 	}
 }

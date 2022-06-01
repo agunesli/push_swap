@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
 
 //	printf("ac = %d argv[0] = [%s]\n", argc, argv[0]);
-	if (argc == 1) 
+	if (argc == 1)
 		exit(0);
 	else if (argc == 2 && !argv[1][0])
 		error();
@@ -27,8 +27,8 @@ int main(int argc, char **argv)
 	a = get_start(argv, argc);
 	b = NULL;
 	algo_push_b(&a, &b);
-	algo_back_b(&a, &b);
+	algo_back_a(&a, &b);
 	free_stack(a);
 	free_stack(b);
-	//write(1, "\nbouh\n",6); 
+	//write(1, "\nbouh\n",6);
 }

@@ -1,11 +1,11 @@
 SRC_F = parsing.c utils.c utils_lst.c get_start.c \
 	push.c rotate.c \
-	algo_push_b.c algo_back_a\
+	algo_push_b.c algo_back_a.c\
  	ft_split.c ft_atoi.c ft_substr.c ft_strdup.c
 
 SRC_M = pushswap.c
 
-SRC_B = 
+SRC_B =
 
 SRC_H	= pushswap.h
 
@@ -41,6 +41,6 @@ clean:
 fclean:	clean
 		$(RM) $(NAME_M) $(NAME_B)
 
-re:		fclean all 
+re:		fclean all
 
 .PHONY:		all clean fclean bonus re
