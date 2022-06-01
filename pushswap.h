@@ -22,8 +22,8 @@ typedef struct s_stack
 	int				index;
 	int				size;
 	int				stay;
-	int				top_get;
 	int				best_start;
+	int				top_get;
 	int				best_back;
 	struct s_stack	*next;
 }	t_stack;
@@ -40,6 +40,7 @@ void	rev_rotate(t_stack **x, t_stack **y, char c);
 
 //algo
 void	algo_push_b(t_stack **a, t_stack **b);
+void	algo_back_a(t_stack **a, t_stack **b);
 
 // utils
 void	error(void);

@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 	a = get_start(argv, argc);
 	b = NULL;
 	algo_push_b(&a, &b);
+	algo_back_b(&a, &b);
 	free_stack(a);
 	free_stack(b);
 	//write(1, "\nbouh\n",6); 
