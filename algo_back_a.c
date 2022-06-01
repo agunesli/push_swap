@@ -15,9 +15,9 @@ t_stack	*found_good_place(t_stack **a, int nbr)
 		*a = (*a)->next;
 	}
 	printf("Good place is %p %d [%d]\n", tmp, tmp->nbr, tmp->index);
-	return (tmp);
+	return (tmp->next);
 }
-
+/*
 void	init_bestback(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
@@ -27,7 +27,7 @@ void	init_bestback(t_stack **a, t_stack **b)
 	while (++i < (*b)->size) //optimisation avec index
 	{
 		tmp = found_good_place(a, (*b)->nbr);
-		(*b)->best_back = (*b)->top_get + tmp->top_get + 1;
+		(*b)->best_back = (*b)->top_get + tmp->top_get;
 		printf("for %p %d [%d]", *b, (*b)->nbr, (*b)->index);
 		printf(" => best_back is %d (%d + %d)\n\n", (*b)->best_back, (*b)->top_get, tmp->top_get);
 		*b = (*b)->next;
@@ -55,16 +55,24 @@ t_stack	*found_less_op2(t_stack *begin)
 	if (tmp)
 		printf("\n\nbest sort topget is %p %d %d\n", tmp, tmp->nbr, tmp->top_get);
 	return (tmp);
-}
+} */
 
 void	algo_back_a(t_stack **a, t_stack **b)
 {
 	// int	i;
 	// int	top;
+	t_stack	*tmp;
 
-	init_bestback(a, b);
-	// while ((*b)->size > 0)
-	// {
+//	init_bestback(a, b);
+	while ((*b)->size > 0)
+	{
+		tmp = found_good_place(a, (*b)->nbr);
+		get_top(b, *b, 98);
+		get_top(a, tmp, 97);
+		push(b, a, 97);
+	//	*b = (*b)->next;
+	}
+
 	// 	i = -1;
 	// 	top = (*b)->top_get;
 	// 	if ((*b)->index < (*b)->size / 2)
@@ -79,6 +87,5 @@ void	algo_back_a(t_stack **a, t_stack **b)
 	// 	}
 	// 	//write(1, "bouh\n",5);
 	// 	//push(a, b, 98);
-	// }
-
+	}
 }

@@ -40,6 +40,7 @@ void	rev_rotate(t_stack **x, t_stack **y, char c);
 
 //algo
 void	algo_push_b(t_stack **a, t_stack **b);
+void	get_top(t_stack **x, t_stack *tmp);
 void	algo_back_a(t_stack **a, t_stack **b);
 
 // utils

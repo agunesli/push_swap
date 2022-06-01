@@ -24,28 +24,34 @@ t_stack	*found_less_op(t_stack *begin)
 	return (tmp);
 }
 
+void	get_top(t_stack **x, t_stack tmp, char c)
+{
+	int	i;
+	int	top;
+
+	i = -1;
+	top = tmp->top_get;
+	if (tmp->index < tmp->size / 2)
+	{
+		while (++i < top)
+			rotate(x, NULL, c);
+	}
+	else
+	{
+		while (++i < top)
+			rev_rotate(x, NULL, c);
+	}
+}
+
 void	algo_push_b(t_stack **a, t_stack **b)
 {
-	int		i;
-	int		top;
 	t_stack	*tmp;
 
 	tmp = found_less_op(*a);
 //	printf("tmp is %p %d %d\n", tmp, tmp->nbr, tmp->top_get);
 	while (tmp != NULL)
 	{
-		i = -1;
-		top = tmp->top_get;
-		if (tmp->index < tmp->size / 2)
-		{
-			while (++i < top)
-				rotate(a, NULL, 97);
-		}
-		else
-		{
-			while (++i < top)
-				rev_rotate(a, NULL, 97);
-		}
+		get_top(a, tmp, 97);
 		//write(1, "bouh\n",5);
 		push(a, b, 98);
 		tmp = found_less_op(*a);
