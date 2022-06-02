@@ -6,6 +6,14 @@ void	error(void)
 	exit(0);
 }
 
+void	end(t_stack **a, t_stack **b)
+{
+	free_stack(a);
+	if (b)
+		free_stack(b);
+	exit(1);
+}
+
 void	free_all(char **str)
 {
 	int	i;
@@ -36,20 +44,20 @@ int	ft_strlen_split(char **str)
 	return (i);
 }
 
-void	free_stack(t_stack *begin)
+void	free_stack(t_stack **begin)
 {
 	int		size;
 	int		i;
 	t_stack	*tmp;
 
-	if (!begin)
+	if (!*begin)
 		return ;
-	size = begin->size;
+	size = (*begin)->size;
 	i = -1;
 	while (++i < size)
 	{
-		tmp = begin;
-		begin = begin->next;
+		tmp = *begin;
+		*begin = (*begin)->next;
 		free(tmp);
 	}
 }

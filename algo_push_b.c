@@ -1,5 +1,4 @@
 #include "pushswap.h"
-#include <stdio.h>
 
 t_stack	*found_less_op(t_stack *begin)
 {
@@ -19,8 +18,6 @@ t_stack	*found_less_op(t_stack *begin)
 		}
 		begin = begin->next;
 	}
-	// if (tmp)
-	// 	printf("\n\nbest sort topget is %p %d %d\n", tmp, tmp->nbr, tmp->top_get);
 	return (tmp);
 }
 
@@ -31,7 +28,7 @@ void	get_top(t_stack **x, t_stack *tmp, char c)
 
 	i = -1;
 	top = tmp->top_get;
-	if (tmp->index < tmp->size / 2)
+	if (tmp->index <= tmp->size / 2)
 	{
 		while (++i < top)
 			rotate(x, NULL, c);
@@ -40,6 +37,7 @@ void	get_top(t_stack **x, t_stack *tmp, char c)
 	{
 		while (++i < top)
 			rev_rotate(x, NULL, c);
+
 	}
 }
 
@@ -48,11 +46,9 @@ void	algo_push_b(t_stack **a, t_stack **b)
 	t_stack	*tmp;
 
 	tmp = found_less_op(*a);
-//	printf("tmp is %p %d %d\n", tmp, tmp->nbr, tmp->top_get);
 	while (tmp != NULL)
 	{
 		get_top(a, tmp, 97);
-		//write(1, "bouh\n",5);
 		push(a, b, 98);
 		tmp = found_less_op(*a);
 	}

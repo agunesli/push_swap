@@ -14,6 +14,7 @@
 # define PUSHSWAP_H
 # include <stdlib.h>
 # include <unistd.h>
+#include <stdio.h>
 
 // Structure
 typedef struct s_stack
@@ -44,18 +45,22 @@ void	print_data(t_stack *begin, int size, char c);
 void	push(t_stack **a, t_stack **b, char c);
 void	rotate(t_stack **x, t_stack **y, char c);
 void	rev_rotate(t_stack **x, t_stack **y, char c);
+void	swap(t_stack **x, char c);
 
 //algo
 void	algo_push_b(t_stack **a, t_stack **b);
 void	get_top(t_stack **x, t_stack *tmp, char c);
 void	algo_back_a(t_stack **a, t_stack **b);
+void	algo_3(t_stack **a);
+void	get_min_top(t_stack **a);
 
 // utils
 void	error(void);
+void	end(t_stack **a, t_stack **b);
 void	free_all(char **d);
 void	error_parsing(char **str);
 int		ft_strlen_split(char **str);
-void	free_stack(t_stack *begin);
+void	free_stack(t_stack **begin);
 char	**ft_shift(char **str, int size);
 
 // utils_lst

@@ -1,5 +1,4 @@
 #include "pushswap.h"
-#include <stdio.h>
 
 t_stack	*init_b(t_stack *b)
 {
@@ -26,9 +25,10 @@ int main(int argc, char **argv)
 	}
 	a = get_start(argv, argc);
 	b = NULL;
+	if (a->size == 3)
+		algo_3(&a);
 	algo_push_b(&a, &b);
 	algo_back_a(&a, &b);
-	free_stack(a);
-	free_stack(b);
+	end(&a, &b);
 	//write(1, "\nbouh\n",6);
 }

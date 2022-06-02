@@ -1,5 +1,4 @@
 #include "pushswap.h"
-#include <stdio.h>
 
 // need to put *b after good place
 t_extremum	found_extremum(t_stack *begin1, t_stack *begin2)
