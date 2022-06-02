@@ -144,7 +144,7 @@ t_stack	*get_start(char **av, int ac)
 	free_all(dst);
 	init_beststart(begin, size);
 	init_stay(begin, size);
-	init_topget(begin, size); 
+	init_topget(begin, size);
 	printf("********** START **********\n");
 	print_data(begin, size, 'a');
 	return (begin);

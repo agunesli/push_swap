@@ -53,4 +53,4 @@ void	algo_push_b(t_stack **a, t_stack **b)
 		tmp = found_less_op(*a);
 	}
 	printf("\n\n -------------- END 1 STEP --------------\n\n");
-}
+	}

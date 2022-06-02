@@ -1,5 +1,4 @@
 #include "pushswap.h"
-#include <stdio.h>
 
 void	update_src(t_stack *begin)
 {
@@ -41,15 +40,10 @@ void	push(t_stack **src, t_stack **dst, char c)
 	tmp = *src;
 	tmpp = *src;
 	printf("\n**********PUSH********\n"); //
-//	printf("src %p %d [%d]\n", *src, (*src)->nbr, (*src)->index); //
-//	if (*dst) //
-//		printf("dst %p %d [%d]\n", *dst, (*dst)->nbr, (*dst)->index); //
 	while ((*src)->index != 0)
 		*src = (*src)->next;
-	// printf("src is %p %d et ", *src, (*src)->nbr);
 	while (tmp->index != tmp->size - 1)
 		tmp = tmp->next;
-	// printf("tmp is %p %d\n", tmp, tmp->nbr);
 	if (tmp == *src)
 		*src = NULL;
 	else

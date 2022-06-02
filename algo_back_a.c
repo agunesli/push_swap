@@ -1,6 +1,5 @@
 #include "pushswap.h"
 
-// need to put *b after good place
 t_extremum	found_extremum(t_stack *begin1, t_stack *begin2)
 {
 	t_extremum	ext;
@@ -39,8 +38,8 @@ t_stack	*found_good_place(t_stack **a, int nbr, t_extremum *ext)
 
 	i = -1;
 	exta = found_extremum(*a, NULL);
-	printf("[ALL] le min est %d et max est %d\n",ext->min, ext->max);
-	printf("[A] le min est %d et max est %d\n",exta.min, exta.max);
+	// printf("[ALL] le min est %d et max est %d\n",ext->min, ext->max);
+	// printf("[A] le min est %d et max est %d\n",exta.min, exta.max);
 	if (nbr == ext->min)
 	{
 		while (++i < (*a)->size && (*a)->nbr != exta.min)
@@ -55,6 +54,7 @@ t_stack	*found_good_place(t_stack **a, int nbr, t_extremum *ext)
 	}
 	while (++i < (*a)->size)
 	{
+		write(1, "bouh\n", 5);
 		if ((*a)->nbr < nbr && nbr < (*a)->next->nbr)
 			tmp = *a;
 		*a = (*a)->next;
@@ -133,7 +133,7 @@ void	algo_back_a(t_stack **a, t_stack **b)
 	while (*b != NULL)
 	{
 		tmp = found_good_place(a, (*b)->nbr, &ext);
-		printf("Good place is %p %d for %p %d\n", tmp, tmp->nbr, *b, (*b)->nbr);
+		// printf("Good place is %p %d for %p %d\n", tmp, tmp->nbr, *b, (*b)->nbr);
 		get_top(b, *b, 98);
 		get_top(a, tmp, 97);
 		push(b, a, 97);
