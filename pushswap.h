@@ -25,7 +25,7 @@ typedef struct s_stack
 	int				stay;
 	int				best_start;
 	int				top_get;
-	int				best_back;
+	int				best_push;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -53,6 +53,7 @@ void	get_top(t_stack **x, t_stack *tmp, char c);
 void	algo_back_a(t_stack **a, t_stack **b);
 void	algo_3(t_stack **a);
 void	get_min_top(t_stack **a);
+t_extremum	found_extremum(t_stack *begin1, t_stack *begin2);
 
 // utils
 void	error(void);

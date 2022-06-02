@@ -86,16 +86,19 @@ void	init_topget(t_stack *begin, int size)
 	while (++j < halfsize)
 	{
 		begin->top_get = j;
+		begin->best_push = j;
 		begin = begin->next;
 	}
 	if (size % 2 == 0)
 	{
 		begin->top_get = j;
+		begin->best_push = j;
 		begin = begin->next;
 	}
 	while (--j > 0)
 	{
 		begin->top_get = j;
+		begin->best_push = j;
 		begin = begin->next;
 	}
 }
@@ -145,7 +148,7 @@ t_stack	*get_start(char **av, int ac)
 	init_beststart(begin, size);
 	init_stay(begin, size);
 	init_topget(begin, size);
-	printf("********** START **********\n");
-	print_data(begin, size, 'a');
+	// printf("********** START **********\n");
+	// print_data(begin, size, 'a');
 	return (begin);
 }

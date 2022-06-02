@@ -31,6 +31,7 @@ t_stack	*found_no_stay(t_stack **a)
 
 void	algo_3(t_stack **a)
 {
+	print_data(*a, 3, 97);
 	if (all_stay(a))
 		get_min_top(a);
 	else
@@ -38,5 +39,6 @@ void	algo_3(t_stack **a)
 		swap(a, 97);
 		get_min_top(a);
 	}
+	print_data(*a, 3, 97);
 	end(a, NULL);
 }
