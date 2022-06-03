@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_other.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/03 12:07:51 by agunesli          #+#    #+#             */
+/*   Updated: 2022/06/03 12:08:17 by agunesli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
-int	all_stay(t_stack **a)
+int	all_stay(t_stack *a)
 {
 	int	i;
 
 	i = -1;
 	while (++i < 3)
 	{
-		if (!(*a)->stay)
+		if (!(a)->stay)
 			return (0);
-		*a = (*a)->next;
+		a = (a)->next;
 	}
 	return (1);
 }
@@ -31,14 +43,14 @@ t_stack	*found_no_stay(t_stack **a)
 
 void	algo_3(t_stack **a)
 {
-	print_data(*a, 3, 97);
-	if (all_stay(a))
+	// print_data(*a, 3, 97);
+	if (all_stay(*a))
 		get_min_top(a);
 	else
 	{
 		swap(a, 97);
 		get_min_top(a);
 	}
-	print_data(*a, 3, 97);
+	// print_data(*a, 3, 97);
 	end(a, NULL);
 }

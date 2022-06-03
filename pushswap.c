@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pushswap.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/03 12:15:48 by agunesli          #+#    #+#             */
+/*   Updated: 2022/06/03 12:16:31 by agunesli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 t_stack	*init_b(t_stack *b)
@@ -7,13 +19,11 @@ t_stack	*init_b(t_stack *b)
 	return (b);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *a;
+	t_stack	*a;
 	t_stack	*b;
 
-
-//	printf("ac = %d argv[0] = [%s]\n", argc, argv[0]);
 	if (argc == 1)
 		exit(0);
 	else if (argc == 2 && !argv[1][0])
@@ -30,5 +40,4 @@ int main(int argc, char **argv)
 	algo_push_b(&a, &b);
 	algo_back_a(&a, &b);
 	end(&a, &b);
-	//write(1, "\nbouh\n",6);
 }

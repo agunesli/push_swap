@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/03 12:11:44 by agunesli          #+#    #+#             */
+/*   Updated: 2022/06/03 12:12:24 by agunesli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 t_extremum	found_extremum(t_stack *begin1, t_stack *begin2)
@@ -16,7 +28,6 @@ t_extremum	found_extremum(t_stack *begin1, t_stack *begin2)
 			ext.max = begin1->nbr;
 		begin1 = begin1->next;
 	}
-	// printf("[A] le min est %d et max est %d\n",ext.min, ext.max);
 	i = -1;
 	while (begin2 && ++i < begin2->size)
 	{
@@ -26,8 +37,27 @@ t_extremum	found_extremum(t_stack *begin1, t_stack *begin2)
 			ext.max = begin2->nbr;
 		begin2 = begin2->next;
 	}
-	// printf("[B] le min est %d et max est %d\n\n",ext.min, ext.max);
 	return (ext);
+}
+
+void	get_max_top(t_stack **a)
+{
+	int		max;
+	int		i;
+	t_stack	*tmp;
+
+	max = -2147483648;
+	i = -1;
+	while (++i < (*a)->size)
+	{
+		if (max < (*a)->nbr)
+		{
+			tmp = *a;
+			max = (*a)->nbr;
+		}
+		(*a) = (*a)->next;
+	}
+	get_top(a, tmp, 98);
 }
 
 void	get_min_top(t_stack **a)
@@ -66,6 +96,5 @@ void	get_top(t_stack **x, t_stack *tmp, char c)
 	{
 		while (++i < top)
 			rev_rotate(x, NULL, c);
-
 	}
 }

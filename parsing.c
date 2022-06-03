@@ -6,12 +6,11 @@
 /*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 23:47:18 by agunesli          #+#    #+#             */
-/*   Updated: 2022/05/31 23:47:21 by agunesli         ###   ########.fr       */
+/*   Updated: 2022/06/03 12:14:20 by agunesli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include <stdio.h>
 
 void	check_int(char **av)
 {
