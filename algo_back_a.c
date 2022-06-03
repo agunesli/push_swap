@@ -12,11 +12,13 @@
 
 #include "pushswap.h"
 
-t_stack	*found_good_place(t_stack *a, int nbr, t_extremum exta)
+t_stack	*found_good_place(t_stack *a, int nbr)
 {
 	int			i;
 	t_stack		*tmp;
+	t_extremum	exta;
 
+	exta = found_extremum(a, NULL);
 	i = -1;
 	if (a->size == 1)
 		return (a);
@@ -44,9 +46,6 @@ t_stack	*found_good_place(t_stack *a, int nbr, t_extremum exta)
 void	algo_back_a(t_stack **a, t_stack **b)
 {
 	t_stack		*tmp;
-	t_extremum	exta;
-
-	exta = found_extremum(a, NULL);
 	while (*b != NULL)
 	{
 		tmp = found_good_place(*a, (*b)->nbr);

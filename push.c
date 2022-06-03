@@ -66,15 +66,15 @@ void	push(t_stack **src, t_stack **dst, char c)
 		update_src(*src);
 	}
 	// if (c == 97 && *src)
-	// 	print_data(*src, (*src)->size, c + 1);
+	// 	print_data(*src, 8/*(*src)->size*/, c + 1);
 	// else if (*src)
-	// 	print_data(*src, (*src)->size, c - 1);
+	// 	print_data(*src, 8/*(*src)->size*/, c - 1);
 	if (!*dst)
 	{
 		*dst = tmpp;
 		(*dst)->size = 1;
 		(*dst)->next = *dst;
-		// print_data(*dst, (*dst)->size, (c));//
+		// print_data(*dst, 8/*(*dst)->size*/, (c));//
 	}
 	else
 	{
@@ -84,7 +84,7 @@ void	push(t_stack **src, t_stack **dst, char c)
 		(*dst)->next = tmpp;
 		*dst = (*dst)->next;
 		update_dst(*dst);
-		// print_data(*dst, (*dst)->size, (c));//
+		// print_data(*dst, 8/*(*dst)->size*/, (c));//
 	}
 	write(1, "p", 1);
 	write(1, &c, 1);

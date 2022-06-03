@@ -98,3 +98,112 @@ void	get_top(t_stack **x, t_stack *tmp, char c)
 			rev_rotate(x, NULL, c);
 	}
 }
+
+// int	ft_min(int nb1, int nb2)
+// {
+// 	if (nb1 < nb2)
+// 		return (nb1);
+// 	else
+// 		return (nb2);
+// }
+
+int	ft_max(int nb1, int nb2)
+{
+	if (nb1 < nb2)
+		return (nb2);
+	else
+		return (nb1);
+}
+
+// int	ft_rest(int nb1, int nb2)
+// {
+// 	return (ft_max(nb1, nb2) - ft_min(nb1, nb2));
+// }
+
+int	ft_abs(int nb)
+{
+	if (nb < 0)
+		return (-nb);
+	else
+		return (nb);
+}
+
+// gp = Good Place
+// x c'est b
+// tmp is in a
+void	get_top2(t_stack **a, t_stack **b, t_stack *tmp)
+{
+	int		i;
+	int		top;
+	int		topgp;
+	t_stack	*gp;
+
+	i = -1;
+	top = tmp->top_get;
+	if (*b == NULL)
+		return (get_top(a, tmp, 97));
+	gp = found_good_place2(*b, tmp->nbr);
+	// write(1, "bouh\n", 5);
+	topgp = gp->top_get;
+	if (tmp->index <= tmp->size / 2)
+	{
+		if (gp->index <= tmp->size / 2)
+		{
+			while (++i < ft_abs(top - topgp))
+				rotate(a, b, 114);
+			if (top > topgp)
+			{
+				while (++i < top + topgp - ft_abs(top - topgp))
+					rotate(a, NULL, 97);
+			}
+			else
+			{
+				while (++i < top + topgp - ft_abs(top - topgp))
+					rotate(b, NULL, 98);
+			}
+		}
+		else
+		{
+			while (++i < top)
+				rotate(a, NULL, 97);
+			while (++i < topgp)
+				rotate(b, NULL, 98);
+		}
+	}
+	else
+	{
+		if (gp->index > tmp->size / 2)
+		{
+			while (++i < ft_abs(top - topgp))
+				rev_rotate(a, b, 114);
+			if (top > topgp)
+			{
+				while (++i < top + topgp - ft_abs(top - topgp))
+					rev_rotate(a, NULL, 97);
+			}
+			else
+			{
+				while (++i < top + topgp - ft_abs(top - topgp))
+					rev_rotate(b, NULL, 98);
+			}
+		}
+		else
+		{
+			while (++i < top)
+				rev_rotate(a, NULL, 97);
+			while (++i < topgp)
+				rev_rotate(b, NULL, 98);
+		}
+/*
+			while (++i < ft_min(top, topgp))
+				rev_rotate(x, y, 114);
+			while (++i < ft_rest(top, topgp))
+				rev_rotate(x, NULL, c);
+		}
+		else
+		{
+			while (++i < top)
+				rev_rotate(x, NULL, c);
+		}*/
+	}
+}

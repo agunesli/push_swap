@@ -12,11 +12,13 @@
 
 #include "pushswap.h"
 
-t_stack	*found_good_place2(t_stack *a, int nbr, t_extremum exta)
+t_stack	*found_good_place2(t_stack *a, int nbr)
 {
 	int			i;
 	t_stack		*tmp;
+	t_extremum	exta;
 
+	exta = found_extremum(a, NULL);
 	if ((a)->size == 1)
 		return (a);
 	i = -1;
@@ -41,7 +43,7 @@ t_stack	*found_good_place2(t_stack *a, int nbr, t_extremum exta)
 	return (tmp->next);
 }
 
-void	init_best_push(t_stack **a, t_stack **b, t_extremum ext)
+void	init_best_push(t_stack **a, t_stack **b)
 {
 	int		i;
 	t_stack	*tmp;
@@ -51,8 +53,13 @@ void	init_best_push(t_stack **a, t_stack **b, t_extremum ext)
 	i = -1;
 	while (++i < (*a)->size)
 	{
-		tmp = found_good_place2(*b, (*a)->nbr, ext);
-		(*a)->best_push = (*a)->top_get + tmp->top_get;
+		tmp = found_good_place2(*b, (*a)->nbr);
+		if (tmp->index <= tmp->size / 2 && (*a)->index <= (*a)->size / 2)
+			(*a)->best_push = ft_max((*a)->top_get, tmp->top_get);
+		else if (tmp->index > tmp->size / 2 && (*a)->index > (*a)->size / 2)
+			(*a)->best_push = ft_max((*a)->top_get, tmp->top_get);
+		else
+			(*a)->best_push = (*a)->top_get + tmp->top_get;
 		*a = (*a)->next;
 	}
 }
@@ -82,21 +89,21 @@ t_stack	*found_less_op(t_stack *a, t_stack **b)
 void	algo_push_b(t_stack **a, t_stack **b)
 {
 	t_stack		*tmp;
-	t_stack		*tmpb;
-	t_extremum	exta;
+	// t_stack		*tmpb;
 
 	tmp = found_less_op(*a, b);
-	exta = found_extremum(a, NULL);
 	while (tmp != NULL)
 	{
-		get_top(a, tmp, 97);
-		if (*b != NULL)
-		{
-			tmpb = found_good_place2(*b, (*a)->nbr);
-			get_top(b, tmpb, 98);
-		}
+		get_top2(a, b, tmp);
+		// get_top(a, tmp, 97);
+		// if (*b != NULL)
+		// {
+		// 	tmpb = found_good_place2(*b, (*a)->nbr);
+		// 	get_top(b, tmpb, 98);
+		// }
 		push(a, b, 98);
 		tmp = found_less_op(*a, b);
 	}
-	get_max_top(b);
+	// get_max_top(b);
+	// get_min_top(a);
 }
