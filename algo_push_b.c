@@ -94,6 +94,7 @@ void	algo_push_b(t_stack **a, t_stack **b)
 	tmp = found_less_op(*a, b);
 	while (tmp != NULL)
 	{
+		// printf("\n tmp of found_less_op is %p %d %d\n", tmp, tmp->nbr, tmp->best_push);
 		get_top2(a, b, tmp);
 		// get_top(a, tmp, 97);
 		// if (*b != NULL)
@@ -104,6 +105,6 @@ void	algo_push_b(t_stack **a, t_stack **b)
 		push(a, b, 98);
 		tmp = found_less_op(*a, b);
 	}
-	// get_max_top(b);
+	get_max_top(b);
 	// get_min_top(a);
 }

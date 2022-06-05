@@ -99,13 +99,13 @@ void	get_top(t_stack **x, t_stack *tmp, char c)
 	}
 }
 
-// int	ft_min(int nb1, int nb2)
-// {
-// 	if (nb1 < nb2)
-// 		return (nb1);
-// 	else
-// 		return (nb2);
-// }
+int	ft_min(int nb1, int nb2)
+{
+	if (nb1 < nb2)
+		return (nb1);
+	else
+		return (nb2);
+}
 
 int	ft_max(int nb1, int nb2)
 {
@@ -145,52 +145,68 @@ void	get_top2(t_stack **a, t_stack **b, t_stack *tmp)
 	gp = found_good_place2(*b, tmp->nbr);
 	// write(1, "bouh\n", 5);
 	topgp = gp->top_get;
+	// printf("\ntmp is %p %d [%d] and gp is %p %d [%d]\n", tmp, tmp->nbr, tmp->index, gp, gp->nbr, gp->index);
 	if (tmp->index <= tmp->size / 2)
 	{
-		if (gp->index <= tmp->size / 2)
+		// printf("the halfsize of tmp is %d\n",tmp->size/2);
+		if (gp->index <= gp->size / 2 && (*b)->size != 1)
 		{
-			while (++i < ft_abs(top - topgp))
+			// printf("the topget od tmp is %d and the topget of gp is %d\n",top, topgp);
+			while (++i < ft_min(top, topgp))
 				rotate(a, b, 114);
+			// printf(" => the min is %d\n",ft_min(top, topgp));
+			i = -1;
 			if (top > topgp)
 			{
-				while (++i < top + topgp - ft_abs(top - topgp))
+				// printf("A\n");
+				while (++i < top + topgp - ft_abs(top - topgp) + 1)
 					rotate(a, NULL, 97);
 			}
 			else
 			{
-				while (++i < top + topgp - ft_abs(top - topgp))
+				// printf("B\n");		
+				while (++i < top + topgp - ft_abs(top - topgp) + 1)
 					rotate(b, NULL, 98);
 			}
 		}
 		else
 		{
+			// printf("C\n");
 			while (++i < top)
 				rotate(a, NULL, 97);
+			i = -1;
 			while (++i < topgp)
 				rotate(b, NULL, 98);
 		}
 	}
 	else
 	{
-		if (gp->index > tmp->size / 2)
+		// printf("the topget od tmp is %d and the topget of gp is %d\n",top, topgp);
+		// printf(" => the min is %d\n",ft_min(top, topgp));
+		if (gp->index > gp->size / 2)
 		{
-			while (++i < ft_abs(top - topgp))
+			while (++i < ft_min(top, topgp))
 				rev_rotate(a, b, 114);
+			i = -1;
 			if (top > topgp)
 			{
-				while (++i < top + topgp - ft_abs(top - topgp))
+				// printf("A\n");
+				while (++i < top + topgp - ft_abs(top - topgp) + 1)
 					rev_rotate(a, NULL, 97);
 			}
 			else
 			{
-				while (++i < top + topgp - ft_abs(top - topgp))
+				// printf("B\n");
+				while (++i < top + topgp - ft_abs(top - topgp) + 1)
 					rev_rotate(b, NULL, 98);
 			}
 		}
 		else
 		{
+			// printf("C\n");
 			while (++i < top)
 				rev_rotate(a, NULL, 97);
+			i = -1;
 			while (++i < topgp)
 				rev_rotate(b, NULL, 98);
 		}

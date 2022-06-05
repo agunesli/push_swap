@@ -34,13 +34,13 @@ void	rotate(t_stack **x, t_stack **y, char c)
 	rot(*x);
 	while ((*x)->index != 0)
 		*x = (*x)->next;
-	// print_data(*x, 8/*(*x)->size*/, c);
+	// print_data(*x, (*x)->size, c);
 	if (y)
 	{
 		rot(*y);
 		while ((*y)->index != 0)
 			*y = (*y)->next;
-		// print_data(*y, 8/*(*x)->size*/, c);
+		// print_data(*y, (*y)->size, c);
 	}
 	write(1, "r", 1);
 	write(1, &c, 1);
@@ -68,13 +68,13 @@ void	rev_rotate(t_stack **x, t_stack **y, char c)
 	rev(*x);
 	while ((*x)->index != 0)
 		*x = (*x)->next;
-	// print_data(*x, 8/*(*x)->size*/, c);
+	// print_data(*x, (*x)->size, c);
 	if (y)
 	{
 		rev(*y);
 		while ((*y)->index != 0)
 			*y = (*y)->next;
-		// print_data(*y, 8/*(*x)->size*/, c);
+		// print_data(*y, (*y)->size, c);
 	}
 	write(1, "rr", 2);
 	write(1, &c, 1);

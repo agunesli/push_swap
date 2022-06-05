@@ -18,7 +18,15 @@ void	print_data(t_stack *begin, int size, char c)
 	printf("\n_______stack %c_______\n", c);
 	while (i < size)
 	{
-		printf("%p nb = %d, index = %d, size = %d, beststart = %d, stay = %d, top_get = %d, next = %p\n",begin, begin->nbr, begin->index, begin->size, begin->best_start, begin->stay, begin->top_get, begin->next);
+		printf("%p ",begin);
+		printf("nb = %d, ", begin->nbr);
+		printf("index = %d, ", begin->index);
+		printf("size = %d, ", begin->size);
+		// printf("beststart = %d, ", begin->best_start);
+		printf("stay = %d, ", begin->stay);
+		printf("top_get = %d, ", begin->top_get);
+		// printf("next = %p", begin->next);
+		printf("best_push = %d\n",begin->best_push);
 		begin = begin->next;
 		i++;
 	}
@@ -149,6 +157,6 @@ t_stack	*get_start(char **av, int ac)
 	init_stay(begin, size);
 	init_topget(begin, size);
 	// printf("********** START **********\n");
-	// print_data(begin, 8, 'a');
+	// print_data(begin, begin->size, 'a');
 	return (begin);
 }

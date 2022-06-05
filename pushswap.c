@@ -39,5 +39,7 @@ int	main(int argc, char **argv)
 		algo_3(&a);
 	algo_push_b(&a, &b);
 	algo_back_a(&a, &b);
+	// printf("********** END **********\n");
+	// print_data(a, a->size, 'a');
 	end(&a, &b);
 }
