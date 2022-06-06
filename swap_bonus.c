@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
 void	init_index(t_stack *x)
 {
@@ -24,7 +24,7 @@ void	init_index(t_stack *x)
 	}
 }
 
-void	swap(t_stack **x, char c)
+void	swap(t_stack **x)
 {
 	t_stack	*tmp;
 
@@ -37,9 +37,6 @@ void	swap(t_stack **x, char c)
 	init_index(*x);
 	init_topget(*x, (*x)->size);
 	// print_data(*x, (*x)->size, c);
-	write(1, "s", 1);
-	write(1, &c, 1);
-	write(1, "\n", 1);
 }
 
 void	sswap(t_stack **x, t_stack **y)
@@ -62,5 +59,4 @@ void	sswap(t_stack **x, t_stack **y)
 	init_index(*y);
 	init_topget(*y, (*y)->size);
 	// print_data(*x, (*x)->size, c);
-	write(1, "ss\n", 3);
 }

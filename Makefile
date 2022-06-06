@@ -1,13 +1,17 @@
-SRC_F = parsing.c utils.c utils_lst.c get_start.c \
-	push.c rotate.c swap.c \
+SRC_F = parsing.c utils.c get_start.c \
+	ft_split.c ft_atoi.c ft_substr.c ft_strdup.c
+
+SRC_M = pushswap.c\
 	algo_push_b.c algo_back_a.c algo_other.c algo_utils.c\
- 	ft_split.c ft_atoi.c ft_substr.c ft_strdup.c
+	push.c rotate.c swap.c
 
-SRC_M = pushswap.c
-
-SRC_B =
+SRC_B = pushswap_bonus.c\
+	push_bonus.c rotate_bonus.c swap_bonus.c \
+	ft_strncmp.c get_next_line.c get_next_line_utils.c
 
 SRC_H	= pushswap.h
+
+SRC_HB	= pushswap_bonus.h
 
 OBJ_M	= $(SRC_M:%.c=%.o)
 
@@ -30,7 +34,7 @@ $(NAME_M): $(OBJ_M) $(OBJ_F) $(SRC_H)
 
 all:	$(NAME_M)
 
-$(NAME_B):	$(OBJ_B) $(OBJ_F) $(OBJ_H)
+$(NAME_B):	$(OBJ_B) $(OBJ_F) $(OBJ_HB)
 		$(CC) $(OBJ_F) $(OBJ_B) -o $(NAME_B)
 
 bonus:	$(NAME_B)

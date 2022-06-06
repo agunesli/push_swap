@@ -24,7 +24,7 @@ t_stack	*found_good_place2(t_stack *a, int nbr)
 	i = -1;
 	if (nbr < exta.min)
 	{
-		while (++i < (a)->size && (a)->nbr != exta.min)
+		while (++i < (a)->size && (a)->nbr != exta.max)
 			a = (a)->next;
 		return (a);
 	}
@@ -89,22 +89,14 @@ t_stack	*found_less_op(t_stack *a, t_stack **b)
 void	algo_push_b(t_stack **a, t_stack **b)
 {
 	t_stack		*tmp;
-	// t_stack		*tmpb;
 
 	tmp = found_less_op(*a, b);
 	while (tmp != NULL)
 	{
-		// printf("\n tmp of found_less_op is %p %d %d\n", tmp, tmp->nbr, tmp->best_push);
 		get_top2(a, b, tmp);
-		// get_top(a, tmp, 97);
-		// if (*b != NULL)
-		// {
-		// 	tmpb = found_good_place2(*b, (*a)->nbr);
-		// 	get_top(b, tmpb, 98);
-		// }
 		push(a, b, 98);
 		tmp = found_less_op(*a, b);
 	}
-	get_max_top(b);
-	// get_min_top(a);
+	if (*b)
+		get_max_top(b);
 }

@@ -12,15 +12,18 @@
 
 #include "pushswap.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	cpt;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (!s)
+		return (0);
+	cpt = 0;
+	while (s[cpt])
+		cpt++;
+	return (cpt);
 }
+
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

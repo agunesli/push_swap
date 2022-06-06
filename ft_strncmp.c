@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 12:15:48 by agunesli          #+#    #+#             */
-/*   Updated: 2022/06/03 12:16:31 by agunesli         ###   ########.fr       */
+/*   Created: 2021/11/26 10:22:04 by agunesli          #+#    #+#             */
+/*   Updated: 2021/11/28 14:38:16 by agunesli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
-int	main(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	if (argc == 1)
-		exit(0);
-	else if (argc == 2 && !argv[1][0])
-		error();
-	else
+	while (n && *(unsigned char *)s1
+		&& *(unsigned char *)s1 == *(unsigned char *)s2)
 	{
-		if (arg(argc, argv))
-			exit(1);
+		s1++;
+		s2++;
+		n--;
 	}
-	a = get_start(argv, argc);
-	b = NULL;
-	if (a->size == 3)
-		algo_3(&a);
-	algo_push_b(&a, &b);
-	algo_back_a(&a, &b);
-	// printf("********** END **********\n");
-	// print_data(a, a->size, 'a');
-	end(&a, &b);
+	if (n)
+		return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	else
+		return (0);
 }

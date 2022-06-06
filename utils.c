@@ -26,6 +26,14 @@ void	end(t_stack **a, t_stack **b)
 	exit(1);
 }
 
+void	error_stack(t_stack **a, t_stack **b)
+{
+	free_stack(a);
+	if (b)
+		free_stack(b);
+	error();
+}
+
 void	free_all(char **str)
 {
 	int	i;
