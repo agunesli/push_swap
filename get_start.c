@@ -13,29 +13,29 @@
 #include "pushswap.h"
 #include <stdio.h>
 
-void	print_data(t_stack *begin, int size, char c)
-{
-	// int	i = 0;
-	(void)size;
-	(void)c;
-	printf("%p ",begin);
+// void	print_data(t_stack *begin, int size, char c)
+// {
+// 	// int	i = 0;
+// 	(void)size;
+// 	(void)c;
+// 	printf("%p ",begin);
 
-	// printf("\n_______stack %c_______\n", c);
-	// while (i < size)
-	// {
-	// 	printf("%p ",begin);
-	// 	printf("nb = %d, ", begin->nbr);
-	// 	printf("index = %d, ", begin->index);
-	// 	printf("size = %d, ", begin->size);
-	// 	// printf("beststart = %d, ", begin->best_start);
-	// 	printf("stay = %d, ", begin->stay);
-	// 	printf("top_get = %d, ", begin->top_get);
-	// 	// printf("next = %p", begin->next);
-	// 	printf("best_push = %d\n",begin->best_push);
-	// 	begin = begin->next;
-	// 	i++;
-	// }
-}
+// 	// printf("\n_______stack %c_______\n", c);
+// 	// while (i < size)
+// 	// {
+// 	// 	printf("%p ",begin);
+// 	// 	printf("nb = %d, ", begin->nbr);
+// 	// 	printf("index = %d, ", begin->index);
+// 	// 	printf("size = %d, ", begin->size);
+// 	// 	// printf("beststart = %d, ", begin->best_start);
+// 	// 	printf("stay = %d, ", begin->stay);
+// 	// 	printf("top_get = %d, ", begin->top_get);
+// 	// 	// printf("next = %p", begin->next);
+// 	// 	printf("best_push = %d\n",begin->best_push);
+// 	// 	begin = begin->next;
+// 	// 	i++;
+// 	// }
+// }
 
 t_stack	*init_a(char **dst, int size, t_stack *begin)
 {
@@ -48,7 +48,9 @@ t_stack	*init_a(char **dst, int size, t_stack *begin)
 	{
 		tmp = (t_stack *)malloc(sizeof(t_stack));
 		if (!tmp)
-			error_init(begin); //free les t_stack deja alloue
+			error_init(begin);
+		tmp->stay = 0;
+		tmp->best_push = 0;
 		tmp->nbr = ft_atoi(dst[i]);
 		tmp->index = i;
 		tmp->size = size;

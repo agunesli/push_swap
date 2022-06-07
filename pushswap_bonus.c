@@ -37,7 +37,7 @@ void	found_op(char *gnl, t_stack **a, t_stack **b)
 	else if (!ft_strncmp(gnl, "rrr\n", 4))
 		rev_rotate(a, b);
 	else
-		error_stack(a, b);
+		error_stack(a, b, gnl);
 }
 
 void	is_sorted(t_stack **a, t_stack **b)
@@ -78,10 +78,12 @@ int	main(int argc, char **argv)
 	else
 	{
 		if (arg(argc, argv))
+		{
+			write(1, "OK\n", 3);
 			exit(1);
+		}
 	}
-	a = get_start(argv, argc);
-	b = NULL;
+	a = ((b = NULL, get_start(argv, argc)));
 	gnl = get_next_line(0);
 	while (gnl)
 	{
@@ -91,4 +93,3 @@ int	main(int argc, char **argv)
 	}
 	is_sorted(&a, &b);
 }
-//Verifier l'etat de ma stack b a la fin du programme

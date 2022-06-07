@@ -28,8 +28,9 @@ void	error_init(t_stack *begin)
 	exit(0);
 }
 
-void	error_stack(t_stack **a, t_stack **b)
+void	error_stack(t_stack **a, t_stack **b, char **gnl)
 {
+	free(gnl);
 	free_stack(a);
 	if (b)
 		free_stack(b);

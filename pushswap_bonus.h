@@ -53,7 +53,7 @@ void		error(void);
 void		end(t_stack **a, t_stack **b);
 void		free_all(char **d);
 void		error_parsing(char **str);
-void		error_stack(t_stack **a, t_stack **b);
+void		error_stack(t_stack **a, t_stack **b, char *gnl);
 int			ft_strlen_split(char **str);
 void		free_stack(t_stack **begin);
 char		**ft_shift(char **str, int size);

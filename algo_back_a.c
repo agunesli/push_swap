@@ -22,17 +22,13 @@ t_stack	*found_good_place(t_stack *a, int nbr)
 	if (a->size == 1)
 		return (a);
 	if (nbr < exta.min)
-	{
 		while (++i < a->size && a->nbr != exta.min)
 			a = a->next;
-		return (a);
-	}
 	if (nbr > exta.max)
-	{
 		while (++i < a->size && a->nbr != exta.max)
 			a = a->next;
+	if (nbr < exta.min || nbr > exta.max)
 		return (a);
-	}
 	while (++i < a->size)
 	{
 		if (a->nbr < nbr && nbr < a->next->nbr)

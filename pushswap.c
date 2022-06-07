@@ -32,6 +32,5 @@ int	main(int argc, char **argv)
 		algo_3(&a);
 	algo_push_b(&a, &b);
 	algo_back_a(&a, &b);
-	print_data(b, 5, 98);
 	end(&a, &b);
 }

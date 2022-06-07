@@ -28,6 +28,8 @@ void	swap(t_stack **x)
 {
 	t_stack	*tmp;
 
+	if (!*x)
+		return ;
 	tmp = (*x)->next;
 	(*x)->next = tmp->next;
 	tmp->next = *x;
@@ -41,6 +43,8 @@ void	sswap(t_stack **x, t_stack **y)
 {
 	t_stack	*tmp;
 
+	if (!*x || !*y)
+		return ;
 	tmp = (*x)->next;
 	(*x)->next = tmp->next;
 	tmp->next = *x;

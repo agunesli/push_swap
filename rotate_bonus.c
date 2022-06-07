@@ -30,6 +30,8 @@ void	rot(t_stack *x)
 
 void	rotate(t_stack **x, t_stack **y)
 {
+	if (!*x)
+		return ;
 	rot(*x);
 	while ((*x)->index != 0)
 		*x = (*x)->next;
@@ -58,6 +60,8 @@ void	rev(t_stack *x)
 
 void	rev_rotate(t_stack **x, t_stack **y)
 {
+	if (!*x)
+		return ;
 	rev(*x);
 	while ((*x)->index != 0)
 		*x = (*x)->next;

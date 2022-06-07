@@ -11,17 +11,6 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-/*
-static int	ft_isspace(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\f') || (str[i] == '\n')
-		|| (str[i] == '\r') || (str[i] == '\t') || (str[i] == '\v'))
-		i++;
-	return (i);
-}*/
 
 int	ft_atoi(const char *str)
 {
@@ -41,7 +30,7 @@ int	ft_atoi(const char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + (str[i] - '0');
-		if (nb < -2147483648 || nb > 2147483647)
+		if (nb * nb_ < -2147483648 || nb * nb_ > 2147483647)
 			return (0);
 		i++;
 	}

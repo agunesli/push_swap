@@ -39,6 +39,18 @@ t_extremum	found_extremum(t_stack *begin1, t_stack *begin2)
 	}
 	return (ext);
 }
+	// if (nbr < exta.min)
+	// {
+	// 	while (++i < (a)->size && (a)->nbr != exta.max)
+	// 		a = (a)->next;
+	// 	return (a);
+	// }
+	// if (nbr > exta.max)
+	// {
+	// 	while (++i < (a)->size && (a)->nbr != exta.max)
+	// 		a = (a)->next;
+	// 	return (a);
+	// }
 
 t_stack	*found_good_place2(t_stack *a, int nbr)
 {
@@ -50,17 +62,13 @@ t_stack	*found_good_place2(t_stack *a, int nbr)
 	if ((a)->size == 1)
 		return (a);
 	if (nbr < exta.min)
-	{
 		while (++i < (a)->size && (a)->nbr != exta.max)
 			a = (a)->next;
-		return (a);
-	}
 	if (nbr > exta.max)
-	{
 		while (++i < (a)->size && (a)->nbr != exta.max)
 			a = (a)->next;
+	if (nbr < exta.min || nbr > exta.max)
 		return (a);
-	}
 	while (++i < (a)->size)
 	{
 		if ((a)->nbr > nbr && nbr > (a)->next->nbr)
@@ -91,7 +99,7 @@ void	init_best_push(t_stack **a, t_stack **b)
 	}
 }
 
-t_stack	*found_less_op(t_stack *a, t_stack **b)
+t_stack	*found_less_op(t_stack **a, t_stack **b)
 {
 	int		min;
 	int		i;
@@ -100,15 +108,15 @@ t_stack	*found_less_op(t_stack *a, t_stack **b)
 	min = 2147483647;
 	i = -1;
 	tmp = NULL;
-	init_best_push(&a, b);
-	while (++i < a->size)
+	init_best_push(a, b);
+	while (++i < (*a)->size)
 	{
-		if (!a->stay && min > a->best_push)
+		if (!(*a)->stay && min > (*a)->best_push)
 		{
-			tmp = a;
-			min = a->best_push;
+			tmp = *a;
+			min = (*a)->best_push;
 		}
-		a = (a)->next;
+		*a = (*a)->next;
 	}
 	return (tmp);
 }
@@ -117,12 +125,12 @@ void	algo_push_b(t_stack **a, t_stack **b)
 {
 	t_stack		*tmp;
 
-	tmp = found_less_op(*a, b);
+	tmp = found_less_op(a, b);
 	while (tmp != NULL)
 	{
 		get_top2(a, b, tmp);
 		push(a, b, 98);
-		tmp = found_less_op(*a, b);
+		tmp = found_less_op(a, b);
 	}
 	if (*b)
 		get_max_top(b);

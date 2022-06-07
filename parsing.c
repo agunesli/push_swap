@@ -23,10 +23,6 @@ void	check_int(char **av)
 		tmp = ft_atoi(av[i]);
 		if (!tmp && (av[i][0] != '0'))
 			error_parsing(av);
-		if (tmp > 2147483647)
-			error_parsing(av);
-		if (tmp < -2147483647)
-			error_parsing(av);
 	}
 }
 
