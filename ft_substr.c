@@ -24,7 +24,6 @@ size_t	ft_strlen(const char *s)
 	return (cpt);
 }
 
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dst;

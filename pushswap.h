@@ -65,7 +65,8 @@ int			ft_strlen_split(char **str);
 void		free_stack(t_stack **begin);
 char		**ft_shift(char **str, int size);
 int			ft_max(int nb1, int nb2);
-// utils_lst
+int			ft_min(int nb1, int nb2);
+void		error_init(t_stack *begin);
 
 // else
 char		**ft_split(char const *s, char c);

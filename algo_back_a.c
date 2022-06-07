@@ -18,8 +18,7 @@ t_stack	*found_good_place(t_stack *a, int nbr)
 	t_stack		*tmp;
 	t_extremum	exta;
 
-	exta = found_extremum(a, NULL);
-	i = -1;
+	exta = ((i = -1, found_extremum(a, NULL)));
 	if (a->size == 1)
 		return (a);
 	if (nbr < exta.min)
@@ -46,6 +45,7 @@ t_stack	*found_good_place(t_stack *a, int nbr)
 void	algo_back_a(t_stack **a, t_stack **b)
 {
 	t_stack		*tmp;
+
 	while (*b != NULL)
 	{
 		tmp = found_good_place(*a, (*b)->nbr);

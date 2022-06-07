@@ -30,17 +30,14 @@ void	rot(t_stack *x)
 
 void	rotate(t_stack **x, t_stack **y)
 {
-	// printf("\n******** ROTATE *********\n");
 	rot(*x);
 	while ((*x)->index != 0)
 		*x = (*x)->next;
-	// print_data(*x, (*x)->size, c);
 	if (y)
 	{
 		rot(*y);
 		while ((*y)->index != 0)
 			*y = (*y)->next;
-		// print_data(*y, (*y)->size, c);
 	}
 }
 
@@ -61,16 +58,13 @@ void	rev(t_stack *x)
 
 void	rev_rotate(t_stack **x, t_stack **y)
 {
-	// printf("\n******** REV ROT *********\n");
 	rev(*x);
 	while ((*x)->index != 0)
 		*x = (*x)->next;
-	// print_data(*x, (*x)->size, c);
 	if (y)
 	{
 		rev(*y);
 		while ((*y)->index != 0)
 			*y = (*y)->next;
-		// print_data(*y, (*y)->size, c);
 	}
 }

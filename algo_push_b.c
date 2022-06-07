@@ -12,16 +12,43 @@
 
 #include "pushswap.h"
 
+t_extremum	found_extremum(t_stack *begin1, t_stack *begin2)
+{
+	t_extremum	ext;
+	int			i;
+
+	ext.min = 2147483647;
+	ext.max = -2147483648;
+	i = -1;
+	while (begin1 && ++i < begin1->size)
+	{
+		if (ext.min > begin1->nbr)
+			ext.min = begin1->nbr;
+		if (ext.max < begin1->nbr)
+			ext.max = begin1->nbr;
+		begin1 = begin1->next;
+	}
+	i = -1;
+	while (begin2 && ++i < begin2->size)
+	{
+		if (ext.min > begin2->nbr)
+			ext.min = begin2->nbr;
+		if (ext.max < begin2->nbr)
+			ext.max = begin2->nbr;
+		begin2 = begin2->next;
+	}
+	return (ext);
+}
+
 t_stack	*found_good_place2(t_stack *a, int nbr)
 {
 	int			i;
 	t_stack		*tmp;
 	t_extremum	exta;
 
-	exta = found_extremum(a, NULL);
+	exta = ((i = -1, found_extremum(a, NULL)));
 	if ((a)->size == 1)
 		return (a);
-	i = -1;
 	if (nbr < exta.min)
 	{
 		while (++i < (a)->size && (a)->nbr != exta.max)
@@ -74,12 +101,12 @@ t_stack	*found_less_op(t_stack *a, t_stack **b)
 	i = -1;
 	tmp = NULL;
 	init_best_push(&a, b);
-	while (++i < (a)->size)
+	while (++i < a->size)
 	{
-		if (!(a)->stay && min > (a)->best_push)
+		if (!a->stay && min > a->best_push)
 		{
 			tmp = a;
-			min = (a)->best_push;
+			min = a->best_push;
 		}
 		a = (a)->next;
 	}

@@ -28,7 +28,6 @@ void	swap(t_stack **x, char c)
 {
 	t_stack	*tmp;
 
-	// printf("\n******** SWAP *********\n");
 	tmp = (*x)->next;
 	(*x)->next = tmp->next;
 	tmp->next = *x;
@@ -36,7 +35,6 @@ void	swap(t_stack **x, char c)
 	*x = tmp;
 	init_index(*x);
 	init_topget(*x, (*x)->size);
-	// print_data(*x, (*x)->size, c);
 	write(1, "s", 1);
 	write(1, &c, 1);
 	write(1, "\n", 1);
@@ -46,7 +44,6 @@ void	sswap(t_stack **x, t_stack **y)
 {
 	t_stack	*tmp;
 
-	// printf("\n******** SWAP *********\n");
 	tmp = (*x)->next;
 	(*x)->next = tmp->next;
 	tmp->next = *x;
@@ -61,6 +58,5 @@ void	sswap(t_stack **x, t_stack **y)
 	*y = tmp;
 	init_index(*y);
 	init_topget(*y, (*y)->size);
-	// print_data(*x, (*x)->size, c);
 	write(1, "ss\n", 3);
 }

@@ -40,20 +40,29 @@ void	found_op(char *gnl, t_stack **a, t_stack **b)
 		error_stack(a, b);
 }
 
-int	is_sorted(t_stack **a)
+void	is_sorted(t_stack **a, t_stack **b)
 {
 	int	sorted;
 	int	i;
 
 	i = -1;
 	sorted = 1;
-	while (++i < (*a)->size)
+	if (*b)
+		write(1, "KO\n", 3);
+	else
 	{
-		if ((*a)->index != (*a)->size - 1 && (*a)->nbr > (*a)->next->nbr)
-			sorted = 1;
-		(*a) = (*a)->next;
+		while (++i < (*a)->size)
+		{
+			if ((*a)->index != (*a)->size - 1 && (*a)->nbr > (*a)->next->nbr)
+				sorted = 0;
+			(*a) = (*a)->next;
+		}
+		if (sorted)
+			write(1, "OK\n", 3);
+		else
+			write(1, "KO\n", 3);
 	}
-	return (sorted);
+	end(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -80,11 +89,6 @@ int	main(int argc, char **argv)
 		free(gnl);
 		gnl = get_next_line(0);
 	}
-	if (b) //Verifier l'etat de ma stack b a la fin du programme
-		write(1, "KO\n", 3);
-	else if (is_sorted(&a))
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
-	end(&a, &b);
+	is_sorted(&a, &b);
 }
+//Verifier l'etat de ma stack b a la fin du programme

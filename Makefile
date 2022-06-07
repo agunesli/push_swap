@@ -1,8 +1,8 @@
-SRC_F = parsing.c utils.c get_start.c \
+SRC_F = parsing.c utils.c utils_error.c get_start.c \
 	ft_split.c ft_atoi.c ft_substr.c ft_strdup.c
 
 SRC_M = pushswap.c\
-	algo_push_b.c algo_back_a.c algo_other.c algo_utils.c\
+	algo_push_b.c algo_back_a.c algo_other.c algo_utils1.c algo_utils2.c\
 	push.c rotate.c swap.c
 
 SRC_B = pushswap_bonus.c\

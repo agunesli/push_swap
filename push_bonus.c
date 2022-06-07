@@ -44,14 +44,34 @@ void	update_dst(t_stack *begin)
 	init_topget(begin, size);
 }
 
+void	change_dst(t_stack *tmpp, t_stack **dst)
+{
+	if (!*dst)
+	{
+		*dst = tmpp;
+		(*dst)->size = 1;
+		(*dst)->next = *dst;
+	}
+	else
+	{
+		tmpp->next = *dst;
+		while ((*dst)->index != (*dst)->size - 1)
+			*dst = (*dst)->next;
+		(*dst)->next = tmpp;
+		*dst = (*dst)->next;
+		update_dst(*dst);
+	}
+}
+
 void	push(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
 	t_stack	*tmpp;
 
+	if (!*src)
+		return ;
 	tmp = *src;
 	tmpp = *src;
-	// printf("\n**********PUSH********\n"); //
 	while ((*src)->index != 0)
 		*src = (*src)->next;
 	while (tmp->index != tmp->size - 1)
@@ -65,25 +85,5 @@ void	push(t_stack **src, t_stack **dst)
 		*src = tmp;
 		update_src(*src);
 	}
-	// if (c == 97 && *src)
-	// 	print_data(*src, (*src)->size, c + 1);
-	// else if (*src)
-	// 	print_data(*src, (*src)->size, c - 1);
-	if (!*dst)
-	{
-		*dst = tmpp;
-		(*dst)->size = 1;
-		(*dst)->next = *dst;
-		// print_data(*dst, (*dst)->size, (c));//
-	}
-	else
-	{
-		tmpp->next = *dst;
-		while ((*dst)->index != (*dst)->size - 1)
-			*dst = (*dst)->next;
-		(*dst)->next = tmpp;
-		*dst = (*dst)->next;
-		update_dst(*dst);
-		// print_data(*dst, (*dst)->size, (c));//
-	}
+	change_dst(tmpp, dst);
 }
