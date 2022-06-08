@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   pushswap_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agunesli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 12:15:48 by agunesli          #+#    #+#             */
-/*   Updated: 2022/06/03 12:16:31 by agunesli         ###   ########.fr       */
+/*   Updated: 2022/06/08 09:51:46 by agunesli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,29 @@ void	found_op(char *gnl, t_stack **a, t_stack **b)
 		error_stack(a, b, gnl);
 }
 
+int	min_in_top(t_stack **a)
+{
+	int		min;
+	int		i;
+	t_stack	*tmp;
+
+	min = 2147483647;
+	i = -1;
+	while (++i < (*a)->size)
+	{
+		if (min > (*a)->nbr)
+		{
+			tmp = *a;
+			min = (*a)->nbr;
+		}
+		(*a) = (*a)->next;
+	}
+	if (tmp->index == 0)
+		return (1);
+	else
+		return (0);
+}
+
 void	is_sorted(t_stack **a, t_stack **b)
 {
 	int	sorted;
@@ -57,7 +80,7 @@ void	is_sorted(t_stack **a, t_stack **b)
 				sorted = 0;
 			(*a) = (*a)->next;
 		}
-		if (sorted)
+		if (sorted && min_in_top(a))
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);

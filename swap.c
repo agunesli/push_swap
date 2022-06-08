@@ -31,7 +31,9 @@ void	swap(t_stack **x, char c)
 	tmp = (*x)->next;
 	(*x)->next = tmp->next;
 	tmp->next = *x;
-	(*x)->next->next = tmp;
+	while ((*x)->index != (*x)->size - 1)
+		(*x) = (*x)->next;
+	(*x)->next = tmp;
 	*x = tmp;
 	init_index(*x);
 	init_topget(*x, (*x)->size);
